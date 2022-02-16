@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        table {
+            padding: 20px;
+            border-spacing: 0;
+        }
+
+        table th, table td {
+            padding: 20px;
+            border: 1px solid black;
+        }
+
+        table tr {
+            padding: 20px;
+        }
+
+        table tr:nth-child(odd):not(th) {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <main id="app">
+        <label v-for="(item, key) in dataset.columns">
+            <input type="checkbox" :checked="item.shouldShow" v-on:change="toggleVisibility(key)">
+            {{ item.columnName }}
+        </label>
+
+        <table>
+            <thead>
+                <tr>
+                    <th align="left" v-for="(item, key) in dataset.columns" v-if="item.shouldShow">{{ item.columnName }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="(todo, key) in dataset.data">
+                    <td v-for="(column, key) in dataset.columns" v-if="column.shouldShow">{{ todo[column.columnName] }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+    <script src="main.js"></script>
+</body>
+</html>
