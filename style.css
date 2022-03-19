@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Montserrat;
+}
+
+table {
+    padding: 20px;
+    border-spacing: 0;
+}
+
+table th, table td {
+    padding: 20px;
+    border: 1px solid black;
+}
+
+table tr {
+    padding: 20px;
+}
+
+table th {
+    background: #333;
+    color: #eee;
+}
+
+table tr:nth-child(even) {
+    background: #ccc;
+}
